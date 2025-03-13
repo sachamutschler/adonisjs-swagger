@@ -1,0 +1,30 @@
+{
+  "name": "adonisjs-swagger",
+  "version": "1.0.0",
+  "description": "swagger package for adonisjs version 6",
+  "keywords": [
+    "adonis",
+    "swagger",
+    "documentation"
+  ],
+  "homepage": "https://github.com/sachamutschler/adonisjs-swagger#readme",
+  "bugs": {
+    "url": "https://github.com/sachamutschler/adonisjs-swagger/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/sachamutschler/adonisjs-swagger.git"
+  },
+  "license": "MIT",
+  "author": "Sacha Mutschler",
+  "type": "commonjs",
+  "types": "index.d.ts",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "dependencies": {
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
