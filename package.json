@@ -1,6 +1,6 @@
 {
   "name": "adonisjs-swagger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "swagger package for adonisjs version 6",
   "keywords": [
     "adonis",
@@ -23,6 +23,11 @@
   "scripts": {
     "test": "npm run test"
   },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "providers"
+  ],
   "dependencies": {
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
