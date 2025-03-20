@@ -1,26 +1,7 @@
 {
+  "extends": "@adonisjs/tsconfig/tsconfig.package.json",
   "compilerOptions": {
-    "target": "ES6",
-    "module": "Node16",
-    "moduleResolution": "node16",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "outDir": "./dist",
-    "baseUrl": ".",
-    "paths": {
-      "@ioc:Adonis/Core/*": ["node_modules/@adonisjs/core/build/src/*"]
-    },
-    "resolveJsonModule": true,
-    "types": ["node"]
-  },
-  "include": [
-    "src/**/*.ts",
-    "node_modules/@adonisjs/core/build/src/**/*.ts",
-    "src/types/adonisjs-swagger.d.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+    "rootDir": "./",
+    "outDir": "./build",
+  }
 }

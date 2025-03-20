@@ -1,22 +1,29 @@
 import { ApplicationService } from '@adonisjs/core/types'
-import { configProvider } from '@adonisjs/core'
-import setupSwagger from '../index.js'
+import {setupSwagger} from '../index.js'
+
+/**
+ * Extended types
+ */
+declare module '@adonisjs/core/types' {
+    interface ContainerBindings {
+        'SwaggerProvider': SwaggerProvider
+    }
+}
 
 export default class SwaggerProvider {
     constructor(protected app: ApplicationService) {
     }
 
     register() {
+        this.app.container.singleton('SwaggerProvider', () => this)
     }
 
     /**
-     * Méthode boot qui est exécutée après l'enregistrement des providers.
-     * Nous utilisons `Server` pour configurer Swagger sur une route.
+     * Boot method called by AdonisJS when starting the application.
      */
     public async boot() {
-        // Utilisez l'instance du serveur pour ajouter Swagger sur une route
         const server = this.app.container.make('Adonis/Core/Server')
-        setupSwagger(server, '/docs')  // Configure Swagger sur la route `/docs`
+        setupSwagger(server, '/docs')
     }
 
     async start() {

@@ -1,0 +1,20 @@
+{{{
+  exports({ to: app.configPath('swagger.js'), template: 'config/swagger.stub' })
+}}}
+
+declare module 'adonisjs-swagger/types' {
+    export interface SwaggerConfig {
+        enabled: boolean;
+        specUrl: string;
+        specFilePath: string;
+        uiEnabled: boolean;
+        uiUrl: string;
+        uiFilePath: string;
+        jsonEditor: boolean;
+        validatorUrl: string;
+        specJson: any;
+        uiJson: any;
+        spec: any;
+        ui: any;
+    }
+}

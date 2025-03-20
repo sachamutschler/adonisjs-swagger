@@ -1,24 +1,25 @@
 # AdonisJS Swagger
 
-Intégration de Swagger dans vos projets AdonisJS 6 pour générer et afficher facilement la documentation de votre API.
+Integration of Swagger into your AdonisJS 6 projects for easily generating and displaying API documentation.
 
 ## Warning
-Ce package est en cours de développement et n'est pas encore prêt pour une utilisation en production.
+
+This package is under development and is not yet ready for production use. 
 
 ## Introduction
 
-**AdonisJS Swagger** est un package qui facilite l'intégration de Swagger dans une application AdonisJS 6. Il s'appuie sur [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express) et [swagger-jsdoc](https://www.npmjs.com/package/swagger-jsdoc) pour générer et servir la documentation Swagger.  
-Ce package est conçu pour être auto-contenu et simple à intégrer via un provider AdonisJS.
+**AdonisJS Swagger** is a package that simplifies integrating Swagger into an AdonisJS 6 application. It relies on [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express) and [swagger-jsdoc](https://www.npmjs.com/package/swagger-jsdoc) to generate and serve the Swagger documentation.
+This package is designed to be self-contained and easy to integrate via an AdonisJS provider.
 
-## Caractéristiques
+## Features
 
-- **Documentation API** : Génération automatique de la documentation Swagger à partir de vos commentaires JSDoc.
-- **Provider intégré** : Un provider AdonisJS qui configure automatiquement Swagger lors du démarrage de l'application.
-- **TypeScript supporté** : Définitions de types fournies pour une meilleure intégration dans les projets TypeScript.
+- **API Documentation** : Automatically generates Swagger documentation from your JSDoc comments.
+- **Built-in Provider** : An AdonisJS provider that automatically configures Swagger when the application starts.
+- **TypeScript support** : Type definitions provided for better integration into TypeScript projects.
 
 ## Installation
 
-Installez le package via npm :
+Install the package via npm
 
 ```bash
 npm install adonisjs-swagger
@@ -26,14 +27,14 @@ npm install adonisjs-swagger
 
 ## Configuration
 
-importer le provider dans votre fichier `adonisrc.ts` :
+Import the provider in your adonisrc.ts file (to be verified):
 
 ```typescript
 providers: [
-    () => import('adonisjs-swagger/src/Providers/SwaggerProvider'),
+    () => import('adonisjs-swagger'),
 ]
 ```
 
 ## Contribution
 
-Les contributions sont les bienvenues ! Pour les suggestions, les problèmes ou les demandes de fonctionnalités, veuillez ouvrir une issue.
+Contributions are welcome! For suggestions, issues, or feature requests, please open an issue.

@@ -1,6 +1,6 @@
 {
   "name": "adonisjs-swagger",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "swagger package for adonisjs version 6",
   "keywords": [
     "adonis",
@@ -18,20 +18,31 @@
   "license": "MIT",
   "author": "Sacha Mutschler",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "scripts": {
+    "copy:templates": "copyfiles \"stubs/**/*.stub\" build",
     "build": "tsc",
+    "postbuild": "npm run copy:templates",
     "test": "npm run test"
   },
   "files": [
-    "index.js",
-    "index.d.ts",
-    "providers"
+    "build/src",
+    "build/providers",
+    "build/stubs",
+    "build/index.d.ts",
+    "build/index.js"
   ],
+  "exports": {
+    ".": "./build/index.js",
+    "./types": "./build/src/types.js"
+  },
   "dependencies": {
+    "@adonisjs/tsconfig": "^1.4.0",
+    "@swc/core": "^1.11.11",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@adonisjs/core": "^6.17.2",
@@ -39,5 +50,12 @@
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.8",
     "typescript": "^5.8.2"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts",
+      "src/providers/SwaggerProvider.ts",
+      "src/types/adonisjs-swagger.d.ts"
+    ]
   }
 }

@@ -5,9 +5,8 @@ declare module 'adonisjs-swagger' {
     import { ApplicationService } from '@adonisjs/core/types'
 
     /**
-     * Configure Swagger pour une application AdonisJS.
-     * @param app - Instance de l'application AdonisJS
-     * @param routePath - Chemin pour accéder à la documentation (défaut : '/docs')
+     * @param app - Instance of the AdonisJS application
+     * @param routePath - Path to access the Swagger documentation (default '/docs')
      */
     export function setupSwagger(app: ApplicationService, routePath?: string): void
 }
