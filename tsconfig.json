@@ -16,7 +16,8 @@
   },
   "include": [
     "src/**/*.ts",
-    "node_modules/@adonisjs/core/build/src/**/*.ts"
+    "node_modules/@adonisjs/core/build/src/**/*.ts",
+    "src/types/adonisjs-swagger.d.ts"
   ],
   "exclude": [
     "node_modules",

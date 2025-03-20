@@ -1,4 +1,7 @@
 declare module 'adonisjs-swagger' {
+    const value: any;
+    export = value;
+
     import { ApplicationService } from '@adonisjs/core/types'
 
     /**
