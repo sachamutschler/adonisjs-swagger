@@ -31,7 +31,7 @@ Import the provider in your adonisrc.ts file (to be verified):
 
 ```typescript
 providers: [
-    () => import('adonisjs-swagger'),
+    () => import('adonisjs-swagger/swagger-provider'),
 ]
 ```
 

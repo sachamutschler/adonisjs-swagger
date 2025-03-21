@@ -1,6 +1,6 @@
 {
   "name": "adonisjs-swagger",
-  "version": "1.3.0",
+  "version": "1.3.2",
   "description": "swagger package for adonisjs version 6",
   "keywords": [
     "adonis",
@@ -35,7 +35,8 @@
   ],
   "exports": {
     ".": "./build/index.js",
-    "./types": "./build/src/types.js"
+    "./types": "./build/src/types.js",
+    "./swagger_provider": "./build/src/Providers/SwaggerProvider.js"
   },
   "dependencies": {
     "@adonisjs/tsconfig": "^1.4.0",
