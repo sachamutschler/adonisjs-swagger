@@ -1,12 +1,15 @@
 import { ApplicationService } from '@adonisjs/core/types'
 import {setupSwagger} from '../index.js'
+import { RuntimeException } from '@poppinss/utils'
+import { configProvider } from '@adonisjs/core'
+import {SwaggerConfig} from "../types.js";
 
 /**
  * Extended types
  */
 declare module '@adonisjs/core/types' {
     interface ContainerBindings {
-        'SwaggerProvider': SwaggerProvider
+        'swagger': SwaggerProvider
     }
 }
 
@@ -15,18 +18,23 @@ export default class SwaggerProvider {
     }
 
     register() {
-        this.app.container.singleton('SwaggerProvider', () => this)
+        this.app.container.singleton('swagger', () => this)
     }
 
     /**
      * Boot method called by AdonisJS when starting the application.
      */
     public async boot() {
-        const server = this.app.container.make('Adonis/Core/Server')
-        setupSwagger(server, '/docs')
     }
 
     async start() {
+        const config = await configProvider.resolve<SwaggerConfig>(this.app, this.app.config.get('swagger'))
+
+        if (!config) {
+            throw new RuntimeException('Missing swagger config')
+        }
+
+        setupSwagger(config)
     }
 
     async ready() {

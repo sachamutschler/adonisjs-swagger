@@ -1,20 +1,63 @@
-{{{
-  exports({ to: app.configPath('swagger.js'), template: 'config/swagger.stub' })
-}}}
+import { defineConfig } from '@adonisjs/core/helpers'
+import { Env } from '@adonisjs/core/env'
 
-declare module 'adonisjs-swagger/types' {
-    export interface SwaggerConfig {
-        enabled: boolean;
-        specUrl: string;
-        specFilePath: string;
-        uiEnabled: boolean;
-        uiUrl: string;
-        uiFilePath: string;
-        jsonEditor: boolean;
-        validatorUrl: string;
-        specJson: any;
-        uiJson: any;
-        spec: any;
-        ui: any;
-    }
-}
+export default defineConfig({
+  /**
+   * Enable Swagger UI
+   * @env SWAGGER_UI_ENABLED
+   */
+  uiEnabled: Env.schema.boolean({ default: true }),
+
+  /**
+   * URL of Swagger UI
+   * @env SWAGGER_UI_URL
+   */
+  uiUrl: Env.schema.string({ default: '/docs' }),
+
+  /**
+   * Spec file URL
+   * @env SWAGGER_SPEC_URL
+   */
+  specUrl: Env.schema.string({ default: '/swagger.json' }),
+
+  /**
+   * Configuration of Swagger JSdoc
+   */
+  options: {
+    definition: {
+      openapi: '3.0.0',
+      info: {
+        title: Env.schema.string({ default: 'API Documentation' }),
+        version: Env.schema.string({ default: '1.0.0' }),
+        description: Env.schema.string.optional(),
+        contact: {
+          name: Env.schema.string.optional(),
+          email: Env.schema.string.optional(),
+          url: Env.schema.string.optional()
+        }
+      },
+      servers: [
+        {
+          url: Env.schema.string({ default: 'http://localhost:3333' }),
+          description: Env.schema.string.optional({ default: 'Development server' })
+        }
+      ],
+      components: {
+        securitySchemes: {
+          // Exemple de schéma de sécurité
+          // bearerAuth: {
+          //   type: 'http',
+          //   scheme: 'bearer',
+          //   bearerFormat: 'JWT'
+          // }
+        }
+      }
+    },
+    apis: Env.schema.array
+      .default([
+        './app/**/*.ts',
+        './start/routes.ts'
+      ])
+      .parse()
+  }
+})

@@ -1,9 +1,23 @@
-/**
- * Config type for the Swagger UI documentation
- */
 export interface SwaggerConfig {
-    title: string
-    version: string
-    description: string
-    routePath?: string
+    uiEnabled: boolean
+    uiUrl: string
+    specUrl: string
+    options: {
+        definition: {
+            openapi: string
+            info: {
+                title: string
+                version: string
+                description?: string
+                contact?: {
+                    name?: string
+                    email?: string
+                    url?: string
+                }
+            }
+            servers?: Array<{ url: string }>
+            components?: unknown
+        }
+        apis: string[]
+    }
 }

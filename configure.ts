@@ -7,4 +7,11 @@ export async function configure(command: Configure) {
     await codemods.makeUsingStub(stubsRoot, 'config/swagger.stub', {
         destination: 'config/swagger.ts',
     })
+
+    /**
+     * Publish provider
+     */
+    await codemods.updateRcFile((rcFile: any) => {
+        rcFile.addProvider('adonisjs-swagger/swagger_provider')
+    })
 }
