@@ -21,12 +21,6 @@ export default class SwaggerProvider {
         this.app.container.singleton('swagger', () => this)
     }
 
-    /**
-     * Boot method called by AdonisJS when starting the application.
-     */
-    public async boot() {
-    }
-
     async start() {
         const config = await configProvider.resolve<SwaggerConfig>(this.app, this.app.config.get('swagger'))
 
@@ -35,11 +29,5 @@ export default class SwaggerProvider {
         }
 
         setupSwagger(config)
-    }
-
-    async ready() {
-    }
-
-    async shutdown() {
     }
 }

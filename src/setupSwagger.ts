@@ -8,17 +8,25 @@ import type { SwaggerConfig } from './types.js'
 export function setupSwagger(config: SwaggerConfig) {
     const swaggerSpec = swaggerJsdoc(config.options)
 
-    // Route pour la spécification OpenAPI
-    router.get(config.specUrl, ({ response }) => {
-        return response.header('Content-type', 'application/json').send(swaggerSpec)
-    })
-
-    // Route pour l'interface Swagger UI
-    if (config.uiEnabled) {
-        router.get(config.uiUrl, ({ response }) => {
-            const html = generateSwaggerHtml(config.specUrl)
-            return response.header('Content-type', 'text/html').send(html)
+    // Spec JSON route
+    try {
+        router.get(config.specUrl, ({ response }) => {
+            return response.header('Content-type', 'application/json').send(swaggerSpec)
         })
+    } catch (error) {
+        console.error(error)
+    }
+
+    // Swagger UI route
+    try {
+        if (config.uiEnabled) {
+            router.get(config.uiUrl, ({ response }) => {
+                const html = generateSwaggerHtml(config.specUrl)
+                return response.header('Content-type', 'text/html').send(html)
+            })
+        }
+    } catch (error) {
+        console.error(error)
     }
 }
 
